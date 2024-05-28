@@ -2,15 +2,31 @@ import Image from "next/image";
 import { Key } from "react";
 import { ProductType } from "../types/productType";
 import Product from "./components/Product";
+import Stripe from "stripe";
 
-async function getProducts() {
-  const response = await fetch("https://fakestoreapi.com/products/");
+async function getProducts(): Promise<ProductType[]> {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: "2024-04-10",
+  });
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
+  const products = await stripe.products.list();
+  const formatedProducts = await Promise.all(
+    products.data.map(async (product) => {
+      const price = await stripe.prices.list({
+        product: product.id,
+      });
+      return {
+        id: product.id,
+        price: price.data[0].unit_amount,
+        name: product.name,
+        image: product.images[0],
+        description: product.description,
+        currency: price.data[0].currency,
+      };
+    })
+  );
 
-  return response.json();
+  return formatedProducts;
 }
 
 export default async function Home() {
@@ -18,7 +34,7 @@ export default async function Home() {
 
   return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-      {products.map((item: ProductType) => (
+      {products.map((item) => (
         <Product key={item.id} product={item} />
       ))}
     </div>
