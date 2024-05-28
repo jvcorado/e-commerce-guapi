@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="pt-br" className="bg-slate-700">
       <body className={inter.className}>
         <NavBar />
-        <main className="container mx-auto pt-32 flex justify-center   min-h-screen">
+        <main className="container mx-auto py-32 flex justify-center   min-h-screen">
           {children}
         </main>
       </body>
