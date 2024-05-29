@@ -9,6 +9,8 @@ type CartState = {
     isOpen: boolean;
     toggleCart: () => void;
     clearItem: (productId: string) => void;
+    onCheckout: string;
+    setCheckout: (checkout: string) => void
 }
 
 
@@ -61,7 +63,21 @@ export const useCartStore = create<CartState>()(
             cart: state.cart.filter(product => product.id !== productId)
         })),
 
-        toggleCart: () => set((state) => ({ isOpen: !state.isOpen })) //SEMPORE QUE CLICAR O STATE VAI SER O OPOSTO DO ATUAL
-    }), { name: 'cart-storage' })
+        toggleCart: () => set((state) => ({ isOpen: !state.isOpen })), //SEMPORE QUE CLICAR O STATE VAI SER O OPOSTO DO ATUAL
+
+        onCheckout: 'cart',
+
+        setCheckout: (checkout) => set(() => ({ onCheckout: checkout }))
+
+
+    }), { name: 'cart-storage' }),
+
+
+
+
+
+
+
+
 )
 

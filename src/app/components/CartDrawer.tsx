@@ -3,7 +3,9 @@ import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
 import { IoTrashBin } from "react-icons/io5";
 import { useCartStore } from "../store";
-import Cart from "./Cart";
+
+import CheckoutButton from "./CheckoutButton";
+import Checkout from "./Checkout";
 
 export default function CartDrawer() {
   const useStore = useCartStore();
@@ -76,17 +78,12 @@ export default function CartDrawer() {
               </div>
             );
           })}
-          <div>
-            Total:{" "}
-            {formatPrice(
-              useStore.cart.reduce((acc, item) => {
-                if (item.price == null || item.quantity == null) {
-                  return acc; // Ignora itens com valores nulos
-                }
-                return acc + item.price * item.quantity; // Retorna o subtotal atualizado
-              }, 0)
-            )}
-          </div>
+
+          {useStore.cart.length > 0 && useStore.onCheckout === "cart" && (
+            <CheckoutButton />
+          )}
+
+          {useStore.onCheckout === "checkout" && <Checkout />}
         </div>
       </div>
     </div>

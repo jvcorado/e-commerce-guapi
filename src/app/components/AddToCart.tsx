@@ -15,7 +15,7 @@ export default function AddToCart({ product }: ProductProps) {
       <button
         key={product.id}
         onClick={(e) => useStore.addToCart(product)}
-        className="bg-teal-600 hover:bg-teal-800 transition duration-300 text-white p-4 rounded-lg w-full"
+        className="bg-green-600 hover:bg-green-800 transition duration-300 text-white p-4 rounded-lg w-full"
       >
         Adicionar
       </button>

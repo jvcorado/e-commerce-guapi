@@ -18,7 +18,7 @@ export default function Cart() {
         className=" flex items-center relative cursor-pointer"
       >
         <FaShoppingCart size={20} />
-        <div className="absolute -top-3 -right-3 flex items-center justify-center bg-green-500 h-5 w-5 rounded-full  text-white text-sm">
+        <div className="absolute -top-3 -right-3 flex items-center justify-center bg-green-600 h-5 w-5 rounded-full  text-white text-sm">
           {useStore.cart.length}
         </div>
       </div>
