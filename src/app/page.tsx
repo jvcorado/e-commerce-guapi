@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { Key } from "react";
 import { ProductType } from "../types/productType";
 import Product from "./components/Product";
 import Stripe from "stripe";

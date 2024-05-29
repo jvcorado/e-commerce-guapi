@@ -17,7 +17,7 @@ export const ProductImage = ({ product, fill }: ProductImageProps) => {
       {fill ? (
         <Image
           src={product.image}
-          alt={product.title}
+          alt={product.name}
           fill
           className={`object-cover ${
             loading
@@ -29,7 +29,7 @@ export const ProductImage = ({ product, fill }: ProductImageProps) => {
       ) : (
         <Image
           src={product.image}
-          alt={product.title}
+          alt={product.name}
           width={400}
           height={700}
           className={`object-cover ${
