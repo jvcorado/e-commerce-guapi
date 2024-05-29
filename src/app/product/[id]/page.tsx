@@ -1,6 +1,4 @@
 import AddToCart from "@/app/components/AddToCart";
-import Product from "@/app/components/Product";
-import { ProductImage } from "@/app/components/ProductImage";
 import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
