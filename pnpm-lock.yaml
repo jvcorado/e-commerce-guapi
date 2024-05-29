@@ -17,9 +17,15 @@ importers:
       '@prisma/client':
         specifier: ^5.14.0
         version: 5.14.0(prisma@5.14.0)
+      '@react-spring/web':
+        specifier: ^9.7.3
+        version: 9.7.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@stripe/stripe-js':
         specifier: ^3.4.1
         version: 3.4.1
+      '@use-gesture/react':
+        specifier: ^10.3.1
+        version: 10.3.1(react@18.3.1)
       next:
         specifier: ^14.2.3
         version: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -270,6 +276,30 @@ packages:
   '@prisma/get-platform@5.14.0':
     resolution: {integrity: sha512-/yAyBvcEjRv41ynZrhdrPtHgk47xLRRq/o5eWGcUpBJ1YrUZTYB8EoPiopnP7iQrMATK8stXQdPOoVlrzuTQZw==}
 
+  '@react-spring/animated@9.7.3':
+    resolution: {integrity: sha512-5CWeNJt9pNgyvuSzQH+uy2pvTg8Y4/OisoscZIR8/ZNLIOI+CatFBhGZpDGTF/OzdNFsAoGk3wiUYTwoJ0YIvw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  '@react-spring/core@9.7.3':
+    resolution: {integrity: sha512-IqFdPVf3ZOC1Cx7+M0cXf4odNLxDC+n7IN3MDcVCTIOSBfqEcBebSv+vlY5AhM0zw05PDbjKrNmBpzv/AqpjnQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  '@react-spring/shared@9.7.3':
+    resolution: {integrity: sha512-NEopD+9S5xYyQ0pGtioacLhL2luflh6HACSSDUZOwLHoxA5eku1UPuqcJqjwSD6luKjjLfiLOspxo43FUHKKSA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  '@react-spring/types@9.7.3':
+    resolution: {integrity: sha512-Kpx/fQ/ZFX31OtlqVEFfgaD1ACzul4NksrvIgYfIFq9JpDHFwQkMVZ10tbo0FU/grje4rcL4EIrjekl3kYwgWw==}
+
+  '@react-spring/web@9.7.3':
+    resolution: {integrity: sha512-BXt6BpS9aJL/QdVqEIX9YoUy8CE6TJrU0mNCqSoxdXlIeNcEBWOfIyE6B14ENNsyQKS3wOWkiJfco0tCr/9tUg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+
   '@rushstack/eslint-patch@1.10.3':
     resolution: {integrity: sha512-qC/xYId4NMebE6w/V33Fh9gWxLgURiNYgVNObbJl2LZv0GUUItCcCqC5axQSwRaAgaxl2mELq1rMzlswaQ0Zxg==}
 
@@ -334,6 +364,14 @@ packages:
 
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
+
+  '@use-gesture/core@10.3.1':
+    resolution: {integrity: sha512-WcINiDt8WjqBdUXye25anHiNxPc0VOrlT8F6LLkU6cycrOGUDyY/yyFmsg3k8i5OLvv25llc0QC45GhR/C8llw==}
+
+  '@use-gesture/react@10.3.1':
+    resolution: {integrity: sha512-Yy19y6O2GJq8f7CHf7L0nxL8bf4PZCPaVOCgJrusOeFHY1LvHgYXnmnXg6N5iwAnbgbZCDjo60SiM6IPJi9C5g==}
+    peerDependencies:
+      react: '>= 16.8.0'
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -1928,6 +1966,35 @@ snapshots:
     dependencies:
       '@prisma/debug': 5.14.0
 
+  '@react-spring/animated@9.7.3(react@18.3.1)':
+    dependencies:
+      '@react-spring/shared': 9.7.3(react@18.3.1)
+      '@react-spring/types': 9.7.3
+      react: 18.3.1
+
+  '@react-spring/core@9.7.3(react@18.3.1)':
+    dependencies:
+      '@react-spring/animated': 9.7.3(react@18.3.1)
+      '@react-spring/shared': 9.7.3(react@18.3.1)
+      '@react-spring/types': 9.7.3
+      react: 18.3.1
+
+  '@react-spring/shared@9.7.3(react@18.3.1)':
+    dependencies:
+      '@react-spring/types': 9.7.3
+      react: 18.3.1
+
+  '@react-spring/types@9.7.3': {}
+
+  '@react-spring/web@9.7.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@react-spring/animated': 9.7.3(react@18.3.1)
+      '@react-spring/core': 9.7.3(react@18.3.1)
+      '@react-spring/shared': 9.7.3(react@18.3.1)
+      '@react-spring/types': 9.7.3
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   '@rushstack/eslint-patch@1.10.3': {}
 
   '@stablelib/base64@1.0.1': {}
@@ -1999,6 +2066,13 @@ snapshots:
       eslint-visitor-keys: 3.4.3
 
   '@ungap/structured-clone@1.2.0': {}
+
+  '@use-gesture/core@10.3.1': {}
+
+  '@use-gesture/react@10.3.1(react@18.3.1)':
+    dependencies:
+      '@use-gesture/core': 10.3.1
+      react: 18.3.1
 
   acorn-jsx@5.3.2(acorn@8.11.3):
     dependencies:

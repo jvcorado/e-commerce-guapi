@@ -38,27 +38,63 @@ export default function Cart() {
             </div>
 
             <div className="overflow-y-auto flex flex-col gap-5">
-              {useStore.cart.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-slate-600 p-5 rounded-lg flex gap-2 items-center"
-                >
-                  <Image
-                    width={50}
-                    height={50}
-                    src={item.image}
-                    alt={item.name}
-                    className="object-cover rounded-lg "
-                  />
-                  <div className="flex flex-col">
-                    <p>{item.name}</p>
-                    <p>{formatPrice(item.price)}</p>
-                    <button onClick={(e) => useStore.removeToCart(item.id)}>
-                      <IoTrashBin fontSizeAdjust={25} color="red" />
+              {useStore.cart.map((item) => {
+                if (item.price == null || item.quantity == null) {
+                  return null; // Ignora itens com valores nulos
+                }
+                const subtotal = item.price * item.quantity;
+                return (
+                  <div
+                    key={item.id}
+                    className="bg-slate-600 p-5 rounded-lg flex gap-2 items-center"
+                  >
+                    <Image
+                      width={50}
+                      height={50}
+                      src={item.image}
+                      alt={item.name}
+                      className="object-cover rounded-lg "
+                    />
+                    <div className="flex flex-col">
+                      <p>{item.name}</p>
+                      <p>{formatPrice(item.price)}</p>
+
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={(e) => useStore.removeToCart(item)}
+                          className="h-5 w-5 flex items-center justify-center rounded-full bg-black text-white"
+                        >
+                          -
+                        </button>
+                        <p>{item.quantity} </p>
+                        <button
+                          onClick={(e) => useStore.addToCart(item)}
+                          className="h-5 w-5 flex items-center justify-center rounded-full bg-black text-white"
+                        >
+                          +
+                        </button>
+                      </div>
+
+                      <p>Subtotal: {formatPrice(subtotal)}</p>
+                    </div>
+
+                    <button onClick={() => useStore.clearItem(item.id)}>
+                      <IoTrashBin />
                     </button>
                   </div>
-                </div>
-              ))}
+                );
+              })}
+              <div>
+                Total:{" "}
+                {formatPrice(
+                  useStore.cart.reduce((acc, item) => {
+                    if (item.price == null || item.quantity == null) {
+                      return acc; // Ignora itens com valores nulos
+                    }
+                    return acc + item.price * item.quantity; // Retorna o subtotal atualizado
+                  }, 0)
+                )}
+              </div>
             </div>
           </div>
         </div>

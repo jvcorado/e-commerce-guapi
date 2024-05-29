@@ -1,7 +1,7 @@
 import { ProductType } from "../types/productType";
+import ClearItemCart from "./components/ClearItemCart";
 import Product from "./components/Product";
 import Stripe from "stripe";
-
 async function getProducts(): Promise<ProductType[]> {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: "2024-04-10",
@@ -35,6 +35,8 @@ export default async function Home() {
       {products.map((item) => (
         <Product key={item.id} product={item} />
       ))}
+
+      <ClearItemCart />
     </div>
   );
 }
