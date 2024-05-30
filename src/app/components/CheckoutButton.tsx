@@ -12,10 +12,10 @@ export default function CheckoutButton() {
   const handleCheckout = async () => {
     if (!user) {
       cartStore.toggleCart();
-      router.push(`/sign-in?redirectUrl='/checkout'`);
+      router.push(`/sign-in?redirectUrl=`);
       return;
     }
-    () => cartStore.setCheckout("checkout");
+    cartStore.setCheckout("checkout");
   };
 
   return (

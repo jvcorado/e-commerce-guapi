@@ -7,7 +7,7 @@ export default function Hydrate({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setIsMounted(true);
-  });
+  }, []);
 
   return isMounted ? (
     <>{children}</>
