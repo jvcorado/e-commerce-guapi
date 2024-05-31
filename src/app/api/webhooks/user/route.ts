@@ -40,7 +40,8 @@ async function handler(request: Request) {
     const heads = {
         'svix-id': headersList.get('svix-id'),
         'svix-timestamp': headersList.get('svix-timestamp'),
-        'svix-signature': headersList.get('svix-signature')
+        'svix-signature': headersList.get('svix-signature'),
+        /*         'Authorization': process.env.STRIPE_SECRET_KEY */
     }
     const wh = new Webhook(webhookSecret)
     let evt: Event | null = null
@@ -67,6 +68,7 @@ async function handler(request: Request) {
 
         const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
             apiVersion: "2024-04-10",
+
         });
 
 

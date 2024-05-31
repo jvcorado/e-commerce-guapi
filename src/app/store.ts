@@ -11,6 +11,8 @@ type CartState = {
     clearItem: (productId: string) => void;
     onCheckout: string;
     setCheckout: (checkout: string) => void
+    paymentIntent: string;
+    setPaymentIntent: (paymentIntent: string) => void
 }
 
 
@@ -66,6 +68,9 @@ export const useCartStore = create<CartState>()(
         toggleCart: () => set((state) => ({ isOpen: !state.isOpen })), //SEMPORE QUE CLICAR O STATE VAI SER O OPOSTO DO ATUAL
 
         onCheckout: 'cart',
+
+        paymentIntent: '',
+        setPaymentIntent: (paymentIntent) => set(() => ({ paymentIntent })),
 
         setCheckout: (checkout) => set(() => ({ onCheckout: checkout }))
 

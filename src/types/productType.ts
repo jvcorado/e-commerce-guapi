@@ -6,5 +6,6 @@ export type ProductType = {
     description: string | null;
     image: string;
     currency?: string;
-
 }
+
+
