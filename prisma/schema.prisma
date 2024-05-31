@@ -41,7 +41,7 @@ model Product {
   name        String
   description String?
   price       Float
-  currency    String
-  stock       Int
+  image       String?
+  quantity    Float   @default(0)
   orders      Order[]
 }
