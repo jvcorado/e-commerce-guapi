@@ -26,6 +26,8 @@ export default function CheckoutButton() {
 
   //teste main codiog att
 
+  //stash
+
   return (
     <div>
       {
