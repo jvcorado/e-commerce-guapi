@@ -20,6 +20,8 @@ export default function CheckoutButton() {
 
   // teste
 
+  //TESTANDO
+
   return (
     <div>
       {
