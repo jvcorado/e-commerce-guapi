@@ -15,8 +15,10 @@ export default function CheckoutButton() {
       router.push(`/sign-in?redirectUrl=`);
       return;
     }
-    cartStore.setCheckout("checkout");
+    () => cartStore.setCheckout("checkout");
   };
+
+  // teste
 
   return (
     <div>

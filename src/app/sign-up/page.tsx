@@ -11,7 +11,11 @@ export default function SingUpPage({
 }: SignUpProps) {
   return (
     <section className="flex items-center justify-center">
-      <SignUp signInUrl="/sign-in" fallbackRedirectUrl={redirectUrl} />
+      <SignUp
+        routing="hash"
+        signInUrl="/sign-in"
+        fallbackRedirectUrl={redirectUrl}
+      />
     </section>
   );
 }
